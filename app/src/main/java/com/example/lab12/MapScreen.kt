@@ -46,7 +46,7 @@ fun MapScreen() {
                 customMarkerIcon = BitmapDescriptorFactory.fromBitmap(
                     BitmapFactory.decodeResource(
                         context.resources,
-                        R.drawable.icons8_mountain_48
+                        R.drawable.icon
                     )
                 )
             }
