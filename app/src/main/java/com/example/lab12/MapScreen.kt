@@ -1,5 +1,6 @@
 package com.example.lab12
 
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -43,13 +44,21 @@ fun MapScreen() {
         ) {
             // Solo creamos el icono cuando el mapa ya está cargado
             if (mapLoaded && customMarkerIcon == null) {
-                customMarkerIcon = BitmapDescriptorFactory.fromBitmap(
-                    BitmapFactory.decodeResource(
-                        context.resources,
-                        R.drawable.icon
-                    )
+                val originalBitmap = BitmapFactory.decodeResource(
+                    context.resources,
+                    R.drawable.icon
                 )
+
+                val scaledBitmap = Bitmap.createScaledBitmap(
+                    originalBitmap,
+                    100, // ancho en píxeles (ajusta según necesidad)
+                    100, // alto en píxeles
+                    false
+                )
+
+                customMarkerIcon = BitmapDescriptorFactory.fromBitmap(scaledBitmap)
             }
+
 
             // Dibujamos el marcador solo cuando el icono está listo
             customMarkerIcon?.let { icon ->
